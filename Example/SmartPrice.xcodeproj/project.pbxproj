@@ -29,7 +29,7 @@
 
 /* Begin PBXFileReference section */
 		02910A3E10E34180DCD93DBD /* Pods-SmartPrice_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartPrice_Example.release.xcconfig"; path = "Target Support Files/Pods-SmartPrice_Example/Pods-SmartPrice_Example.release.xcconfig"; sourceTree = "<group>"; };
-		04877BE4DAEC20F637005EF5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		04877BE4DAEC20F637005EF5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		352EE19BB46D92B84B398E6B /* Pods-SmartPrice_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartPrice_Example.debug.xcconfig"; path = "Target Support Files/Pods-SmartPrice_Example/Pods-SmartPrice_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		444E499C7094C8D2E5EA285A /* Pods_SmartPrice_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartPrice_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* SmartPrice_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartPrice_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,10 +43,10 @@
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		6238EF5793EBF4BBE1B93A38 /* Pods-SmartPrice_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartPrice_Tests.release.xcconfig"; path = "Target Support Files/Pods-SmartPrice_Tests/Pods-SmartPrice_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		7DC0A01EFFC42A4B1EFDB66C /* SmartPrice.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SmartPrice.podspec; path = ../SmartPrice.podspec; sourceTree = "<group>"; };
+		7DC0A01EFFC42A4B1EFDB66C /* SmartPrice.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SmartPrice.podspec; path = ../SmartPrice.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7EA34C16277424757B2DE922 /* Pods_SmartPrice_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartPrice_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8055B1CBEE1C543306E27686 /* Pods-SmartPrice_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartPrice_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SmartPrice_Tests/Pods-SmartPrice_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		DAC689797F7C25E7C0E62B2F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		DAC689797F7C25E7C0E62B2F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +156,6 @@
 				8055B1CBEE1C543306E27686 /* Pods-SmartPrice_Tests.debug.xcconfig */,
 				6238EF5793EBF4BBE1B93A38 /* Pods-SmartPrice_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);

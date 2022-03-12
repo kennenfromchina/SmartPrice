@@ -22,7 +22,7 @@ pod 'SmartPrice'
 
 ## Author
 
-kennenfromchina, linzhichun@zhilunkeji.com
+kennenfromchina, kennenfromchina@163.com
 
 ## License
 
