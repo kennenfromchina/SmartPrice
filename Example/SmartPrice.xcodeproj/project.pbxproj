@@ -270,10 +270,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SmartPrice_Example/Pods-SmartPrice_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SmartPrice/SmartPrice.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SmartPrice.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

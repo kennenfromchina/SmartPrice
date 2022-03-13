@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import SmartPrice
+import Then
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let price = 1000000000000.324
+        let label: UILabel = UILabel().then { label in
+            label.frame = view.frame
+            label.textAlignment = .center
+            label.attributedText = price.toDisplayPrice()
+        }
+        view.do { view in
+            view.backgroundColor = .white
+            view.addSubview(label)
+        }
     }
 
     override func didReceiveMemoryWarning() {
