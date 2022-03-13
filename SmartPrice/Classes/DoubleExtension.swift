@@ -43,33 +43,44 @@ extension Double {
             integerFont: UIFont = .systemFont(ofSize: 18),
             decimalFont: UIFont = .systemFont(ofSize: 14)
     ) -> NSAttributedString {
+        // init string
         var origin = toPrice(decimalLength: decimalLength, smartFlag: smartFlag)
         origin = "\(symbol)\(origin)"
 
-        var symbolRange: NSRange?
-        var decimalRange: NSRange?
+        // init attributes dictionary
+        var rangeDictionary: [NSRange: [NSAttributedString.Key: Any]] = [:]
 
+        // add total range attributes
+        if let range = origin.range(of: origin) {
+            let key = NSRange(range, in: origin)
+            rangeDictionary[key] = [
+                NSAttributedString.Key.foregroundColor: color,
+                NSAttributedString.Key.font: integerFont,
+            ]
+        }
+
+        // add symbol range attributes
         if symbol.isNotEmpty {
-            symbolRange = (origin as NSString).range(of: symbol)
+            let key = NSRange(origin.range(of: symbol)!, in: origin)
+            rangeDictionary[key] = [
+                NSAttributedString.Key.font: symbolFont
+            ]
         }
 
+        // add decimal range attributes
         if origin.contains(".") {
-            decimalRange = (origin as NSString).range(of: String(origin[origin.firstIndex(of: ".")!...]))
+            let key = NSRange(origin.range(of: String(origin[origin.firstIndex(of: ".")!...]))!, in: origin)
+            rangeDictionary[key] = [
+                NSAttributedString.Key.font: decimalFont
+            ]
         }
 
-        let attributes = [
-            NSAttributedString.Key.foregroundColor: color,
-            NSAttributedString.Key.font: integerFont,
-        ]
+        // init
+        let result = NSMutableAttributedString(string: origin)
 
-        let result: NSMutableAttributedString = NSMutableAttributedString(string: origin, attributes: attributes)
-
-        if let range = symbolRange {
-            result.addAttribute(NSAttributedString.Key.font, value: symbolFont, range: range)
-        }
-
-        if let range = decimalRange {
-            result.addAttribute(NSAttributedString.Key.font, value: decimalFont, range: range)
+        // set attributes with range
+        rangeDictionary.forEach { (key: NSRange, value: [NSAttributedString.Key: Any]) in
+            result.addAttributes(value, range: key)
         }
 
         return result
