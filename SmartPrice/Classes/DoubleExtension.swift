@@ -47,40 +47,43 @@ extension Double {
         var origin = toPrice(decimalLength: decimalLength, smartFlag: smartFlag)
         origin = "\(symbol)\(origin)"
 
-        // init attributes dictionary
-        var rangeDictionary: [NSRange: [NSAttributedString.Key: Any]] = [:]
+        // init attributes array
+        var rangeAttributesArray: [(NSRange, [NSAttributedString.Key: Any])] = []
 
         // add total range attributes
-        if let range = origin.range(of: origin) {
-            let key = NSRange(range, in: origin)
-            rangeDictionary[key] = [
+        if let total = origin.range(of: origin) {
+            let range = NSRange(total, in: origin)
+            let attributes = [
                 NSAttributedString.Key.foregroundColor: color,
                 NSAttributedString.Key.font: integerFont,
             ]
+            rangeAttributesArray.append((range, attributes))
         }
 
         // add symbol range attributes
         if symbol.isNotEmpty {
-            let key = NSRange(origin.range(of: symbol)!, in: origin)
-            rangeDictionary[key] = [
+            let range = NSRange(origin.range(of: symbol)!, in: origin)
+            let attributes = [
                 NSAttributedString.Key.font: symbolFont
             ]
+            rangeAttributesArray.append((range, attributes))
         }
 
         // add decimal range attributes
         if origin.contains(".") {
-            let key = NSRange(origin.range(of: String(origin[origin.firstIndex(of: ".")!...]))!, in: origin)
-            rangeDictionary[key] = [
+            let range = NSRange(origin.range(of: String(origin[origin.firstIndex(of: ".")!...]))!, in: origin)
+            let attributes = [
                 NSAttributedString.Key.font: decimalFont
             ]
+            rangeAttributesArray.append((range, attributes))
         }
 
         // init
         let result = NSMutableAttributedString(string: origin)
 
         // set attributes with range
-        rangeDictionary.forEach { (key: NSRange, value: [NSAttributedString.Key: Any]) in
-            result.addAttributes(value, range: key)
+        rangeAttributesArray.forEach { (range: NSRange, attributes: [NSAttributedString.Key: Any]) in
+            result.addAttributes(attributes, range: range)
         }
 
         return result
