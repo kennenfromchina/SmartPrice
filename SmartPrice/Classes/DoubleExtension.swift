@@ -4,6 +4,7 @@
 
 import Foundation
 import UIKit
+import UIColor_Hex_Swift
 
 extension String {
     var isEmpty: Bool {
@@ -37,10 +38,10 @@ extension Double {
     public func toDisplayPrice(
             decimalLength: Int = 2,
             smartFlag: Bool = true,
-            color: UIColor = .red,
+            color: UIColor = UIColor("#E3330D"),
             symbol: String = "¥",
-            symbolFont: UIFont = .systemFont(ofSize: 14),
-            integerFont: UIFont = .systemFont(ofSize: 18),
+            symbolFont: UIFont = .systemFont(ofSize: 13),
+            integerFont: UIFont = .systemFont(ofSize: 22, weight: .medium),
             decimalFont: UIFont = .systemFont(ofSize: 14)
     ) -> NSAttributedString {
         // init string
@@ -53,9 +54,9 @@ extension Double {
         // add total range attributes
         if let total = origin.range(of: origin) {
             let range = NSRange(total, in: origin)
-            let attributes = [
-                NSAttributedString.Key.foregroundColor: color,
-                NSAttributedString.Key.font: integerFont,
+            let attributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: color,
+                .font: integerFont,
             ]
             rangeAttributesArray.append((range, attributes))
         }
@@ -63,8 +64,8 @@ extension Double {
         // add symbol range attributes
         if symbol.isNotEmpty {
             let range = NSRange(origin.range(of: symbol)!, in: origin)
-            let attributes = [
-                NSAttributedString.Key.font: symbolFont
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: symbolFont
             ]
             rangeAttributesArray.append((range, attributes))
         }
@@ -72,8 +73,8 @@ extension Double {
         // add decimal range attributes
         if origin.contains(".") {
             let range = NSRange(origin.range(of: String(origin[origin.firstIndex(of: ".")!...]))!, in: origin)
-            let attributes = [
-                NSAttributedString.Key.font: decimalFont
+            let attributes: [NSAttributedString.Key: Any] = [
+                .font: decimalFont
             ]
             rangeAttributesArray.append((range, attributes))
         }
@@ -88,4 +89,26 @@ extension Double {
 
         return result
     }
+
+    public func toOriginPrice(
+            decimalLength: Int = 2,
+            smartFlag: Bool = true,
+            color: UIColor = UIColor("#999999"),
+            symbol: String = "¥",
+            originText: String = "原价:",
+            font: UIFont = .systemFont(ofSize: 14)
+    ) -> NSAttributedString {
+        var origin = toPrice(decimalLength: decimalLength, smartFlag: smartFlag)
+        origin = "\(originText)\(symbol)\(origin)"
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: color,
+            .font: font,
+            .strikethroughStyle: NSUnderlineStyle.thick.rawValue,
+            .strikethroughColor: color,
+            .baselineOffset: 0,
+        ]
+        return NSAttributedString(string: origin, attributes: attributes)
+    }
+
+
 }
